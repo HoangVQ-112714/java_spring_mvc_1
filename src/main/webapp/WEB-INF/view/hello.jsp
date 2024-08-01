@@ -10,6 +10,7 @@
 </head>
 <body>
 hello from jsp
-<h1>${eric} - ${eric2}</h1>
+<h1><c:out value="${eric}" /></h1> //jstl
+<h1>${eric} - ${eric2}</h1> //jsp
 </body>
 </html>
