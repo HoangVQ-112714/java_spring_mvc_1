@@ -30,14 +30,21 @@ public class UserController {
     }
 
     @RequestMapping("/admin/user/create")
-    public String getAdminCreatUserPage(Model model) {
+    public String creatUser(Model model) {
         model.addAttribute("newUser", new User());
-        return "admin/user/create";
+        return "admin/user/user-create";
     }
 
     @RequestMapping(value = "/admin/user", method = RequestMethod.POST)
-    public String createAdminCreatUserPage(Model model, @ModelAttribute("newUser") User user) {
+    public String creatUserPost(Model model, @ModelAttribute("newUser") User user) {
         this.userService.handleSaveUser(user);
         return "hello";
+    }
+
+    @RequestMapping("/admin/user")
+    public String getAdminCreatUserPage(Model model) {
+        List<User> arrUser = this.userService.getUserByEmail("1nywodu@mailinator.com");
+        model.addAttribute("users", arrUser);
+        return "admin/user/user-list";
     }
 }
