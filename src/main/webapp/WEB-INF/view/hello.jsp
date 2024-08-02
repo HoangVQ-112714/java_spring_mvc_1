@@ -21,6 +21,8 @@
 </head>
 <body>
 hello from jsp
+<br>
+${users}
 <h1><c:out value="${eric}"/></h1> //jstl
 <h1>${eric} - ${eric2}</h1> //jsp
 <button class="btn btn-success">Submit</button>

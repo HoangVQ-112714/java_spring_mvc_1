@@ -9,6 +9,8 @@ import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.UserService;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -20,18 +22,20 @@ public class UserController {
 
     @RequestMapping("/")
     public String getHomePage(Model model) {
+        List<User> arrUser = this.userService.getUserByEmail("1nywodu@mailinator.com");
+        model.addAttribute("users", arrUser);
         model.addAttribute("eric", "test");
         model.addAttribute("eric2", "say hi..");
         return "hello";
     }
 
-    @RequestMapping("/admin/user")
+    @RequestMapping("/admin/user/create")
     public String getAdminCreatUserPage(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
-    @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/user", method = RequestMethod.POST)
     public String createAdminCreatUserPage(Model model, @ModelAttribute("newUser") User user) {
         this.userService.handleSaveUser(user);
         return "hello";

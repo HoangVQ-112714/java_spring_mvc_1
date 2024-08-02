@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<form:form method="post" action="/admin/user/create" modelAttribute="newUser">
+<form:form method="post" action="/admin/user" modelAttribute="newUser">
     <div class="mb-3">
         <label for="userMail" class="form-label">Mail</label>
         <form:input type="email" class="form-control" id="userMail" path="email"/>
