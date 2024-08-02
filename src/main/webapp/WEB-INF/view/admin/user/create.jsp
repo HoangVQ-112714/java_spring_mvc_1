@@ -24,10 +24,6 @@
 
 <form:form method="post" action="/admin/user/create" modelAttribute="newUser">
     <div class="mb-3">
-        <label for="userId" class="form-label">ID</label>
-        <form:input type="number" class="form-control" id="userId" path="id"/>
-    </div>
-    <div class="mb-3">
         <label for="userMail" class="form-label">Mail</label>
         <form:input type="email" class="form-control" id="userMail" path="email"/>
     </div>
