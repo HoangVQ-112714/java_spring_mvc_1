@@ -3,7 +3,7 @@ package vn.hoidanit.laptopshop.domain;
 import jakarta.persistence.*;
 
 @Entity
-//@Table(name = "nguoi_dung")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +14,9 @@ public class User {
     private String address;
     private String phone;
 
+    private String avatar;
+    //Role
+
     @Override
     public String toString() {
         return "User{" +
@@ -23,6 +26,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 
@@ -72,5 +76,13 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
