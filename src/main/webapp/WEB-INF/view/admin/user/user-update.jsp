@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create User</title>
+    <title>Update User</title>
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -22,10 +22,9 @@
 </head>
 <body>
 
-<form:form method="post" action="/admin/user/list" modelAttribute="newUser">
+<form:form method="post" action="/admin/user/${id}" modelAttribute="user">
     <div class="mb-3">
-        <label for="userPass" class="form-label">Password</label>
-        <form:input type="password" class="form-control" id="userPass" path="password"/>
+        <p class="form-label">Id: ${id}</p>
     </div>
     <div class="mb-3">
         <label for="userName" class="form-label">Name</label>
@@ -39,7 +38,7 @@
         <label for="userPhone" class="form-label">Phone</label>
         <form:input type="tel" class="form-control" id="userPhone" path="phone"/>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Update</button>
 </form:form>
 
 </body>

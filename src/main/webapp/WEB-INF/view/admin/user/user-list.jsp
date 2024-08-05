@@ -21,6 +21,31 @@
     <link rel="stylesheet" href="/css/demo.css">
 </head>
 <body>
-${users}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Phone</th>
+        <th scope="col">---</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${users}" var="person">
+        <tr>
+            <th scope="row">${person.id}</th>
+            <td>${person.name}</td>
+            <td>${person.email}</td>
+            <td>${person.phone}</td>
+            <td>
+                <a href="/admin/user/${person.id}">Detail</a>
+                <a href="/admin/update/${person.id}">Edit</a>
+                <a href="/admin/delete/${person.id}">Delete</a>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>
