@@ -2,6 +2,8 @@ package vn.hoidanit.laptopshop.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -13,9 +15,14 @@ public class User {
     private String name;
     private String address;
     private String phone;
-
     private String avatar;
-    //Role
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     @Override
     public String toString() {
