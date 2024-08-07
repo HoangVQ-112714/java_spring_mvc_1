@@ -1,5 +1,6 @@
-package vn.hoidanit.laptopshop.controller;
+package vn.hoidanit.laptopshop.controller.admin;
 
+import jakarta.servlet.ServletContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,11 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final ServletContext servletContext;
 
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService, ServletContext servletContext) {
         this.userService = userService;
+        this.servletContext = servletContext;
     }
 
     @RequestMapping("/")
