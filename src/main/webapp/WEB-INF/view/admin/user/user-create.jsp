@@ -28,6 +28,10 @@
         <form:input type="password" class="form-control" id="userPass" path="password"/>
     </div>
     <div class="mb-3">
+        <label for="userMail" class="form-label">Mail</label>
+        <form:input type="email" class="form-control" id="userMail" path="email"/>
+    </div>
+    <div class="mb-3">
         <label for="userName" class="form-label">Name</label>
         <form:input type="text" class="form-control" id="userName" path="name"/>
     </div>
