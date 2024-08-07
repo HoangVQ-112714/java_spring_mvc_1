@@ -33,7 +33,8 @@
                             <th scope="col">Name</th>
                             <th scope="col">Mail</th>
                             <th scope="col">Phone</th>
-                            <th scope="col">---</th>
+                            <th scope="col">Role</th>
+                            <th scope="col"><a href="/admin/user/create" class="btn btn-primary">Create User</a></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,6 +44,7 @@
                                 <td>${person.name}</td>
                                 <td>${person.email}</td>
                                 <td>${person.phone}</td>
+                                <td>${person.role.name}</td>
                                 <td>
                                     <a href="/admin/user/${person.id}">Detail</a>
                                     <a href="/admin/update/${person.id}">Edit</a>
