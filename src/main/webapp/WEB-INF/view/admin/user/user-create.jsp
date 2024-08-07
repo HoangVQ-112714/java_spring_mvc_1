@@ -21,7 +21,7 @@
             avatarFile.change(function (e) {
                 const imgURL = URL.createObjectURL(e.target.files[0]);
                 $("#avatarPreview").attr("src", imgURL);
-                $("#avatarPreview").css({ "display": "block" });
+                $("#avatarPreview").css({"display": "block"});
             });
         });
     </script>
@@ -41,7 +41,8 @@
                 <div class="mt-5">
                     <div class="row">
                         <div class="col-md-6 col-12 mx-auto">
-                            <form:form method="post" action="/admin/user/list" modelAttribute="newUser" class="row">
+                            <form:form method="post" action="/admin/user/list" modelAttribute="newUser" class="row"
+                                       enctype="multipart/form-data">
                                 <div class="mb-3 col-12 col-md-6">
                                     <label for="userName" class="form-label">Name</label>
                                     <form:input type="text" class="form-control" id="userName" path="name"/>
@@ -64,15 +65,15 @@
                                 </div>
                                 <div class="mb-3 col-12 col-md-6">
                                     <label class="form-label">Role:</label>
-                                    <select class="form-select">
-                                        <option value="ADMIN">ADMIN</option>
-                                        <option value="USER">USER</option>
-                                    </select>
+                                    <form:select class="form-select" path="role.id">
+                                        <form:option value="1">ADMIN</form:option>
+                                        <form:option value="2">USER</form:option>
+                                    </form:select>
                                 </div>
                                 <div class="mb-3 col-12 col-md-6">
                                     <label for="avatarFile" class="form-label">Avatar:</label>
-                                    <input class="form-control" type="file" id="avatarFile"
-                                           accept=".png, .jpg, .jpeg">
+                                    <input class="form-control" type="file" id="avatarFile" name="hoidanitFile"
+                                           accept=".png, .jpg, .jpeg"/>
                                 </div>
                                 <div class="col-12 mb-3">
                                     <img style="max-height: 250px; display: none;" alt="avatar preview"

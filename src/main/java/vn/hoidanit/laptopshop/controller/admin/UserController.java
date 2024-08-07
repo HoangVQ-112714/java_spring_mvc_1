@@ -4,21 +4,27 @@ import jakarta.servlet.ServletContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
+import vn.hoidanit.laptopshop.service.UploadService;
 import vn.hoidanit.laptopshop.service.UserService;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class UserController {
 
     private final UserService userService;
-    private final ServletContext servletContext;
+    private final UploadService uploadService;
 
-    public UserController(UserService userService, ServletContext servletContext) {
+    public UserController(UserService userService, UploadService uploadService) {
         this.userService = userService;
-        this.servletContext = servletContext;
+        this.uploadService = uploadService;
     }
 
     @RequestMapping("/")
@@ -30,15 +36,18 @@ public class UserController {
         return "hello";
     }
 
-    @RequestMapping("/admin/user/create")
+    @GetMapping("/admin/user/create")
     public String creatUser(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/user-create";
     }
 
-    @RequestMapping(value = "/admin/user/list", method = RequestMethod.POST)
-    public String creatUserPost(Model model, @ModelAttribute("newUser") User user) {
-        this.userService.handleSaveUser(user);
+    @PostMapping(value = "/admin/user/list")
+    public String creatUserPost(Model model,
+                                @ModelAttribute("newUser") User user,
+                                @RequestParam("hoidanitFile") MultipartFile file) {
+        String avatar = this.uploadService.handleSaveFileUploadFile(file, "avatar");
+//        this.userService.handleSaveUser(user);
         return "redirect:/admin/user/list";
     }
 
