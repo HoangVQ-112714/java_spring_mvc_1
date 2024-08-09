@@ -40,8 +40,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/admin/user/list")
-    public String creatUserPost(Model model,
-                                @ModelAttribute("newUser") User user,
+    public String creatUserPost(@ModelAttribute("newUser") User user,
                                 @RequestParam("hoidanitFile") MultipartFile file) {
         String avatar = this.uploadService.handleSaveFileUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(user.getPassword());

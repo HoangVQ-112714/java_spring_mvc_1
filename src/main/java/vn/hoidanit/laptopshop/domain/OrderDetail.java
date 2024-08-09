@@ -11,6 +11,25 @@ public class OrderDetail {
     private long quatity;
     private double price;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "id=" + id +
+                ", quatity=" + quatity +
+                ", price=" + price +
+                ", order=" + order +
+                ", product=" + product +
+                '}';
+    }
+
     public long getId() {
         return id;
     }
@@ -35,11 +54,19 @@ public class OrderDetail {
         this.price = price;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    public Order getOrder() {
+        return order;
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
