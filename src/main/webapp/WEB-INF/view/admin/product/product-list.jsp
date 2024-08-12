@@ -40,7 +40,7 @@
                         <tbody>
                         <c:forEach items="${products}" var="product">
                             <tr>
-                                <th scope="row"><img src="../images/product/${product.image}" alt=""></th>
+                                <th scope="row"><img src="/images/product/${product.image}" alt="" style="width: 100px"></th>
                                 <td>${product.name}</td>
                                 <td>${product.price}</td>
                                 <td>${product.quantity}</td>

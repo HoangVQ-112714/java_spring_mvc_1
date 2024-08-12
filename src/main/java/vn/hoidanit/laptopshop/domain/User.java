@@ -1,6 +1,11 @@
 package vn.hoidanit.laptopshop.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 import java.util.List;
 
@@ -10,7 +15,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @NotNull
+    @Email(message = "Email không hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
+//    @NotNull
+//    @Min(value = 3, message = "Sua lai pass di")
     private String password;
     private String name;
     private String address;
@@ -43,13 +52,15 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "address='" + address + '\'' +
-                ", id=" + id +
+                "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", role=" + role +
+                ", orders=" + orders +
                 '}';
     }
 

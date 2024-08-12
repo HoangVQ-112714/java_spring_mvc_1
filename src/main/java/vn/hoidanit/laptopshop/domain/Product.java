@@ -1,6 +1,8 @@
 package vn.hoidanit.laptopshop.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
@@ -11,6 +13,9 @@ public class Product {
     private String name;
     private double price;
     private String image;
+    @NotNull
+    @NotEmpty(message = "detailDesc không được để trống")
+    @Column(columnDefinition= "MEDIUMTEXT")
     private String detailDesc;
     private String shortDesc;
     private long quantity;
