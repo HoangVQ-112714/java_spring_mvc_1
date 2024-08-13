@@ -43,23 +43,21 @@ public class UserController {
     }
 
     @PostMapping(value = "/admin/user/list")
-//    public String creatUserPost(@ModelAttribute("newUser") @Valid User user,
-//                                BindingResult newUserBindingResult,
-//                                @RequestParam("hoidanitFile") MultipartFile file) {
-    public String creatUserPost(@ModelAttribute("newUser") User user,
+    public String creatUserPost(@ModelAttribute("newUser") @Valid User user,
+                                BindingResult newUserBindingResult,
                                 @RequestParam("hoidanitFile") MultipartFile file) {
-//        List<FieldError> errors = newUserBindingResult.getFieldErrors();
-//        for (FieldError error : errors) {
-//            System.out.println(error.getField() + " - " + error.getDefaultMessage());
-//        }
-//        if (newUserBindingResult.hasErrors()) {
-//            return "admin/user/user-create";
-//        }
+        List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        }
+        if (newUserBindingResult.hasErrors()) {
+            return "admin/user/user-create";
+        }
         String avatar = this.uploadService.handleSaveFileUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
         user.setAvatar(avatar);
         user.setPassword(hashPassword);
-//        user.setRole(this.userService.getRoleByName(user.getRole().getName()));
+        user.setRole(this.userService.getRoleByName(user.getRole().getName()));
         this.userService.handleSaveUser(user);
         return "redirect:/admin/user/list";
     }
